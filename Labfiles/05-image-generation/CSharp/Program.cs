@@ -60,6 +60,7 @@ namespace generate_image
                     while (status.ToString() != "succeeded" && tries < 101)
                     {
                         tries ++;
+                        System.Threading.Thread.Sleep(1000);
                         response = await client.GetAsync(callback_url);
                         stringResponse = await response.Content.ReadAsStringAsync();
                         status = JsonSerializer.Deserialize<Dictionary<string,object>>(stringResponse)["status"];
